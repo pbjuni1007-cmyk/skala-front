@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 여행 앨범 | SKALA</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="../media/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+    <div class="container">
+      <header class="page-header">
+        <p class="eyebrow">TRAVEL ARCHIVE</p>
+        <h1>나의 여행 앨범</h1>
+        <p>
+          media 형태를 연습하기 위한 나의 여행 앨범입니다. <br />
+          <small
+            >사용 element : &lt;figure&gt; &lt;img&gt; &lt;figcaption&gt;
+            &lt;audio&gt; &lt;video&gt;</small
+          >
+          <br />
+          <small
+            >CSS는 이 HTML 파일 내에서 적용하지 않고, 외부 style.css 파일에서
+            적용됩니다.</small
+          >
+        </p>
+      </header>
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="myProfile.html">프로필</a></li>
+          <li><a href="myClass.html">시간표</a></li>
+          <li><a href="myHoliday.html">휴일</a></li>
+          <li><a aria-current="page" href="myTrip.html">여행</a></li>
+          <li><a class="nav-cta" href="signUp.html">회원가입</a></li>
+        </ul>
+      </nav>
+      <main id="main-content" class="single-column">
+        <section>
+          <p class="section-number">01 / PHOTO NOTES</p>
+          <h2>기억하고 싶은 세 장면</h2>
+          <!--
+            그냥 이미지를 갖다넣으면, 해당 그리드에 맞춰서 임의로 이미지가 crop되는 것을 확인했습니다.
+            이를 방지하기 위해, figure 요소를 사용하고 img 요소의 원본 비율을 유지하도록 CSS class를 적용했습니다.
+          -->
+          <div class="trip-grid-container">
+            <figure class="trip-figure">
+              <img
+                src="../media/img_1.jpg"
+                alt="산티아고 순례길"
+              />
+              <figcaption>인생 최고의 여행지, 산티아고 순례길</figcaption>
+              <p class="trip-card">
+                <strong>산티아고</strong> — 순례길의 마지막 장면이 잘리지 않도록
+                세로 사진의 원본 비율을 살렸습니다.
+              </p>
+            </figure>
+            <figure class="trip-figure">
+              <img
+                src="../media/img_2.jpg"
+                alt="뉴욕 독립기념일 불꽃놀이"
+              />
+              <figcaption>뉴욕 독립기념일 불꽃놀이</figcaption>
+              <p class="trip-card">
+                <strong>뉴욕</strong> — 독립기념일 불꽃놀이 현장이 한눈에
+                들어오도록 사진 전체를 담았습니다.
+              </p>
+            </figure>
+            <figure class="trip-figure">
+              <img
+                src="../media/img_3.jpg"
+                alt="홍콩대학교"
+              />
+              <figcaption>홍콩대학교 교류 프로그램</figcaption>
+              <p class="trip-card">
+                <strong>홍콩</strong> — 교류 프로그램의 단체 사진도 같은
+                프레임에서 자연스럽게 보이도록 조정했습니다.
+              </p>
+            </figure>
+          </div>
+        </section>
+        <section class="media-grid">
+          <article class="audio-card">
+            <p class="section-number">02 / AUDIO</p>
+            <h2>여행의 소리</h2>
+            <audio controls preload="metadata">
+              <source src="../media/new_audio.mp3" type="audio/mpeg" />
+              브라우저가 오디오 재생을 지원하지 않습니다.
+            </audio>
+            <p class="notice">
+              제가 보유 중인 오디오 파일이 없어, 저작권 문제가 없는 샘플
+              오디오를 별도로 다운로드해 사용했습니다.
+            </p>
+          </article>
+          <article class="video-card">
+            <p class="section-number">03 / VIDEO</p>
+            <h2>짧은 여행 기록</h2>
+            <video
+              controls
+              preload="metadata"
+            >
+              <source src="../media/video_1_720p.mov" type="video/mp4" />
+              브라우저가 비디오 재생을 지원하지 않습니다.
+            </video>
+            <p class="notice">
+              세로로 촬영한 여행 영상이 잘리지 않도록 원본 비율을 유지해
+              표시했습니다.
+            </p>
+          </article>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <p class="footer-return"><a href="index.html">← 메인 화면으로 돌아가기</a></p>
+        <p>Contact <a href="mailto:pbjuni1007@gmail.com">pbjuni1007@gmail.com</a></p>
+        <p>Github <a href="https://github.com/pbjuni1007-cmyk" target="_blank" rel="noopener noreferrer">https://github.com/pbjuni1007-cmyk <span class="visually-hidden">(새 탭에서 열림)</span></a></p>
+        <p><small>© 2026 SKALA 박병준. All rights reserved.</small></p>
+      </footer>
+    </div>
+    <script src="../script/theme.js"></script>
+  </body>
+</html>

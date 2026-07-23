@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!--
+  GET 요청의 query string을 활용해서 회원가입 결과를 보여주는 페이지입니다.
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 완료 | SKALA</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../media/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+  <div class="container narrow">
+    <header class="page-header success-header">
+      <p class="eyebrow">FORM RESULT</p>
+      <h1>회원가입을 환영합니다</h1>
+      <p>
+        GET Form의 입력 결과와 DOM 조작을 연습하기 위한 결과 화면입니다. <br />
+        <small
+          >사용 element : &lt;section&gt; &lt;h2&gt; &lt;dl&gt; &lt;dt&gt;
+          &lt;dd&gt; &lt;a&gt;</small
+        >
+        <br />
+        <small
+          >CSS는 이 HTML 파일 내에서 적용하지 않고, 외부 style.css 파일에서
+          적용됩니다.</small
+        >
+      </p>
+    </header>
+    <main id="main-content" class="single-column">
+      <section class="result-card" aria-live="polite">
+        <h2><span id="result-name">회원</span>님, 반갑습니다!</h2>
+        <dl><div><dt>아이디</dt><dd id="result-id">입력 없음</dd></div><div><dt>이메일</dt><dd id="result-email">입력 없음</dd></div><div><dt>관심 분야</dt><dd id="result-interests">선택 없음</dd></div></dl>
+        <p class="notice">이 페이지는 교육용 예제이며 실제 회원정보를 저장하거나 메일을 발송하지 않습니다.</p>
+      </section>
+      <div class="form-actions"><a class="button-link" href="index.html">메인 화면으로 돌아가기</a><a class="button-link secondary" href="signUp.html">다시 작성</a></div>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-return"><a href="index.html">← 메인 화면으로 돌아가기</a></p>
+      <p>Contact <a href="mailto:pbjuni1007@gmail.com">pbjuni1007@gmail.com</a></p>
+      <p>Github <a href="https://github.com/pbjuni1007-cmyk" target="_blank" rel="noopener noreferrer">https://github.com/pbjuni1007-cmyk <span class="visually-hidden">(새 탭에서 열림)</span></a></p>
+      <p><small>© 2026 SKALA 박병준. All rights reserved.</small></p>
+    </footer>
+  </div>
+  <script src="../script/theme.js"></script>
+  <script type="module" src="../script/signupResult.js"></script>
+</body>
+</html>
