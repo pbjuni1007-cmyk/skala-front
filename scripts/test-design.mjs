@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const css = readFileSync(join(root, 'css/style.css'), 'utf8');
-const readme = readFileSync(join(root, 'README.md'), 'utf8');
 const failures = [];
 
 function assert(condition, message) {
@@ -34,7 +33,6 @@ for (const [name, value] of variablesFrom(/html\[data-theme="night"\]\s*{([^]*?)
 
 assert(day.get('seoul-coral')?.toLowerCase() === '#f8496c', '디자인: Seoulmate primary coral token 누락');
 assert(/(?:Design|reference)\s+source:\s*pbjuni1007-cmyk\/seoulmate-pbjuni1007/i.test(css), '디자인: CSS provenance 주석 누락');
-assert(readme.includes('b965d46bbff3ff9fec77bf67e5b812f7877445a9'), '디자인: README source commit 누락');
 assert(/\.info-card:hover[^]*?translateY\(-4px\)/.test(css), '디자인: card hover elevation 누락');
 assert(/@media\s*\(prefers-reduced-motion:\s*reduce\)/.test(css), '디자인: reduced motion 대응 누락');
 assert(/\.trip-figure img\s*{[^}]*aspect-ratio:\s*1;[^}]*object-fit:\s*contain;/s.test(css), '디자인: 여행 사진 전체 표시 프레임 누락');

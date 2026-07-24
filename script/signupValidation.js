@@ -206,7 +206,7 @@ function sendVerificationCode() {
   setVerificationState('인증번호 발송됨', 'pending');
   startVerificationTimer();
 
-  // [추가 실습] 실제 전송 없이도 발송 → 입력 → 제한시간 → 완료 상태 흐름을 확인한다.
+  // 메일 서버는 없지만 발송 → 입력 → 제한시간 → 완료로 이어지는 화면 상태는 직접 확인해봤습니다.
   showEmailSentPopup();
   emailVerificationCode.focus();
 }
@@ -292,7 +292,7 @@ function validateAll() {
 }
 
 if (form) {
-  // [추가 실습] JavaScript가 실행되면 메시지를 직접 관리하고, 실행되지 않으면 HTML required가 대체합니다.
+  // JavaScript가 실행되면 필드별 메시지를 보여주고, 실행되지 않을 때는 HTML required가 기본 안전망이 됩니다.
   form.noValidate = true;
 
   userId.addEventListener('input', () => validateBasicField(userId, 'user-id-error', validateUserId));
@@ -319,7 +319,7 @@ if (form) {
       return;
     }
 
-    // [추가 실습] 앞뒤 공백은 검증에만 쓰고 버리지 않으면 결과 URL에 남으므로 제출 직전에 정규화한다.
+    // 앞뒤 공백이 결과 URL에 그대로 남지 않도록 제출 직전에 값을 한 번 정리합니다.
     userId.value = userId.value.trim();
     userName.value = userName.value.trim();
     emailLocal.value = emailLocal.value.trim();

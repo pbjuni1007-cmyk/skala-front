@@ -19,12 +19,13 @@ HTML·CSS·JavaScript 수업에서 만든 페이지들을 하나의 개인 포�
 | 회원가입 | 입력 검증과 3분 이메일 모의 인증 | Form, Event, 상태 관리, 접근성 |
 | 가입 결과 | GET Form 결과 표시 | Query string, `URLSearchParams`, `textContent` |
 
-메인 화면에는 수업에서 만든 Up-Down 게임, 성적 계산기, 가방 목록도 함께 넣었습니다. 각각 `prompt`, 조건문, 반복문, Array·Object를 다시 손에 익히기 위한 작은 실습입니다.
+메인 화면에는 수업에서 만든 Up-Down 게임, 성적 계산기, 가방 목록도 함께 넣었습니다. 성적 계산기는 평균 60점의 합격 기준과 A~F 등급을 함께 보여줍니다. 각각 `prompt`, 조건문, 반복문, Array·Object를 다시 손에 익히기 위한 작은 실습입니다.
 
 ## 실행 방법
 
 ```bash
 npm test
+npm run readiness
 npm run serve
 ```
 
@@ -49,7 +50,7 @@ Seoulmate의 Vue·Vuetify component나 로고·이미지를 가져오지는 않�
 
 낮 테마는 Seoulmate의 coral/pink/white 계열에서 시작했고, 밤 테마는 같은 색상 관계를 유지하면서 새로 만들었습니다. 다크모드를 좋아해서 추가한 기능이지만, 구현하면서 CSS 변수를 실제 상태 전환에 연결하는 연습도 됐습니다.
 
-React·PWA 프로젝트에서 신경 썼던 반응형과 접근성 경험도 같이 가져왔습니다. `768px`(반응형 웹의 국룰 breakpoint), media query, skip link, `aria-live`, keyboard focus, `prefers-reduced-motion`이 그 흔적입니다. React라면 공통 UI를 component로 먼저 분리했겠지만, 이번에는 여러 HTML 문서를 연결해보는 수업 목적에 맞춰 Multi-Page 구조를 유지했습니다.
+React·PWA 프로젝트에서 신경 썼던 반응형과 접근성 경험도 같이 가져왔습니다. 이 프로젝트에서는 `768px`을 모바일 전환 기준으로 잡았고, media query, skip link, `aria-live`, keyboard focus, `prefers-reduced-motion`도 함께 확인했습니다. React라면 공통 UI를 component로 먼저 분리했겠지만, 이번에는 여러 HTML 문서를 연결해보는 수업 목적에 맞춰 Multi-Page 구조를 유지했습니다.
 
 | 이전에 익힌 관점 | 이번 과제에서 다시 해본 것 | 이유 |
 |---|---|---|
@@ -118,18 +119,22 @@ React·PWA 프로젝트에서 신경 썼던 반응형과 접근성 경험도 같
 | 이메일 도메인 선택·직접 입력 | 실제 회원가입 Form에서 자주 보는 입력 흐름을 만들어봤습니다. | `직접 입력` 선택 |
 | 3분 이메일 모의 인증 | 백엔드 없이도 발송·입력·만료·완료의 상태 변화를 연습했습니다. | `SKALA4th` 오답·정답 입력 |
 | 실시간 날씨 | DOM event, Fetch API, ES Module을 하나의 기능으로 연결했습니다. | 홈에서 도시 선택 |
+| 성적 A~F 등급 분기 | 합격 여부만 보여주는 데서 끝내지 않고 같은 평균으로 등급도 계산했습니다. | 90·80·70·60·59점 입력 |
 | 접근성 보완 | 마우스 외의 사용 방식과 상태 안내도 놓치지 않으려 했습니다. | Tab 이동, `aria-live`, reduced motion 확인 |
 | 반복 검사 | 페이지가 늘어나면서 생길 수 있는 누락과 예외 분기를 다시 확인합니다. | `npm test` |
 
 이메일 인증은 어디까지나 프런트엔드 상태 흐름을 확인하기 위한 모의 기능입니다. 실제 서비스라면 서버가 일회용 코드를 생성하고, 발송·만료·시도 횟수·최종 인증 상태를 관리해야 합니다.
 
+## 미디어 기록
+
+여행 페이지의 사진 세 장과 세로 영상은 개인 여행 기록을 사용했습니다. 영상은 브라우저에서 다루기 편하도록 720p H.264/AAC MP4로 정리했습니다. 오디오는 출처가 불분명한 외부 샘플을 남기지 않으려고 FFmpeg의 pink noise와 필터만으로 짧게 생성했습니다. 파일별 설명은 `media/README.md`에 적었습니다.
 
 ## 프로젝트 구조
 
 ```text
 css/       공통 스타일과 낮/밤 테마
 html/      포털과 개별 실습 페이지
-media/     본인 또는 사용 허가된 이미지·오디오·영상
+media/     개인 이미지·영상과 직접 생성한 오디오
 script/    JavaScript 실습과 ES Module
 scripts/   자동 검증과 동작 테스트
 ```

@@ -51,9 +51,20 @@ assert(grade.some((message) => message.includes('0부터 100')), '성적 계산�
 assert(grade.some((message) => message.includes('총점: 240점')), '성적 계산기: 총점 계산 오류');
 assert(grade.some((message) => message.includes('평균: 80.0점')), '성적 계산기: 평균 계산 오류');
 assert(grade.some((message) => message.includes('판정: 합격')), '성적 계산기: 판정 오류');
+assert(grade.some((message) => message.includes('등급: B')), '성적 계산기: B 등급 판정 오류');
 
-const gradeFail = runGameScript('grade.js', ['10', '20', '30']);
+const gradeA = runGameScript('grade.js', ['90', '90', '90']);
+assert(gradeA.some((message) => message.includes('등급: A')), '성적 계산기: A 등급 판정 오류');
+
+const gradeC = runGameScript('grade.js', ['70', '70', '70']);
+assert(gradeC.some((message) => message.includes('등급: C')), '성적 계산기: C 등급 판정 오류');
+
+const gradeD = runGameScript('grade.js', ['60', '60', '60']);
+assert(gradeD.some((message) => message.includes('등급: D')), '성적 계산기: D 등급 판정 오류');
+
+const gradeFail = runGameScript('grade.js', ['59', '59', '59']);
 assert(gradeFail.some((message) => message.includes('판정: 불합격')), '성적 계산기: 60점 미만 불합격 분기 누락');
+assert(gradeFail.some((message) => message.includes('등급: F')), '성적 계산기: F 등급 판정 오류');
 
 const gradeCancel = runGameScript('grade.js', [null]);
 assert(gradeCancel.some((message) => message.includes('취소')), '성적 계산기: 취소 분기 누락');

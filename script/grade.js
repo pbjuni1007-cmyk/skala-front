@@ -22,11 +22,25 @@ function checkGrade() {
   var total = scores.reduce((sum, score) => sum + score, 0);
   var average = total / subjects.length;
   var result = average >= 60 ? '합격입니다!' : '불합격입니다ㅠ';
+  let grade;
+
+  if (average >= 90) {
+    grade = 'A';
+  } else if (average >= 80) {
+    grade = 'B';
+  } else if (average >= 70) {
+    grade = 'C';
+  } else if (average >= 60) {
+    grade = 'D';
+  } else {
+    grade = 'F';
+  }
 
   window.alert([
     '성적 결과표',
     `총점: ${total}점`,
     `평균: ${average.toFixed(1)}점`,
+    `등급: ${grade}`,
     `판정: ${result}`
   ].join('\n'));
 }

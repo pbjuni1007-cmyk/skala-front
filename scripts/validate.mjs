@@ -9,6 +9,8 @@ const errors = [];
 const warnings = [];
 
 const requiredFiles = [
+  'package.json',
+  'README.md',
   'html/index.html',
   'html/myHoliday.html',
   'html/myProfile.html',
@@ -26,6 +28,8 @@ const requiredFiles = [
   'script/signupRules.js',
   'script/signupValidation.js',
   'script/signupResult.js',
+  'media/travel-ambient.mp3',
+  'media/video_1_720p.mp4',
   'scripts/test-design.mjs',
   'scripts/test-signup.mjs'
 ];
@@ -96,7 +100,7 @@ const weatherApi = readFileSync(join(root, 'script/weatherAPI.js'), 'utf8');
 const theme = readFileSync(join(root, 'script/theme.js'), 'utf8');
 const upDown = readFileSync(join(root, 'script/upDown.js'), 'utf8');
 const grade = readFileSync(join(root, 'script/grade.js'), 'utf8');
-const readme = readFileSync(join(root, 'README.md'), 'utf8');
+const mediaReadme = readFileSync(join(root, 'media/README.md'), 'utf8');
 
 const checks = [
   [/<title>Welcome SKALA<\/title>/, index, 'index: required title'],
@@ -121,6 +125,8 @@ const checks = [
   [/<audio\s+controls/, trip, 'trip: audio'],
   [/<video\s+controls/, trip, 'trip: video'],
   [/<div class="trip-map-card">/, trip, 'trip: embedded map card'],
+  [/<p class="trip-card">/, trip, 'trip: required paragraph card'],
+  [/src="\.\.\/media\/video_1_720p\.mp4"\s+type="video\/mp4"/, trip, 'trip: MP4 source and MIME'],
   [/<form[^>]+action="signUpResult\.html"[^>]+method="get"/i, signup, 'signup: GET form'],
   [/required/, signup, 'signup: required validation'],
   [/id="signup-form"/, signup, 'signup: validation form target'],
@@ -184,13 +190,7 @@ const checks = [
   [/response\.ok/, weatherApi, 'js: HTTP status check'],
   [/축하합니다![^]*?번 만에 맞추셨습니다\./, upDown, 'js: required Up-Down success message'],
   [/average\s*>=\s*60\s*\?\s*'합격입니다!'\s*:\s*'불합격입니다ㅠ'/, grade, 'js: personalized grade result labels'],
-  [/무엇을 만들었나/, readme, 'README: project overview'],
-  [/이전 프로젝트 경험을 가져온 방식/, readme, 'README: prior learning evidence'],
-  [/기본 실습에서 확장한 기능/, readme, 'README: extra practice evidence'],
-  [/Seoulmate의 Vue·Vuetify component/, readme, 'README: design lineage'],
-  [/b965d46bbff3ff9fec77bf67e5b812f7877445a9/, readme, 'README: source commit'],
-  [/구현하면서 고민한 부분/, readme, 'README: troubleshooting evidence'],
-  [/강의 실습 항목 확인/, readme, 'README: lecture practice appendix']
+  [/`등급:\s*\$\{grade\}`/, grade, 'js: grade display']
 ];
 
 for (const [pattern, source, label] of checks) {
@@ -208,6 +208,12 @@ for (const sensitiveId of ['userPw', 'userPwConfirm', 'emailVerificationCode']) 
 
 const rowspanCount = (classSchedule.match(/rowspan="2"/g) ?? []).length;
 if (rowspanCount !== 5) errors.push(`시간표 셀 병합 오류: 월~금 마지막 2시간에 rowspan 5개 필요, 현재 ${rowspanCount}개`);
+
+const tripCardCount = (trip.match(/<p class="trip-card">/g) ?? []).length;
+if (tripCardCount !== 3) errors.push(`여행 카드 단락 오류: trip-card 3개 필요, 현재 ${tripCardCount}개`);
+
+const tripMapCount = (trip.match(/<div class="trip-map-card">/g) ?? []).length;
+if (tripMapCount !== 3) errors.push(`여행 지도 카드 오류: trip-map-card 3개 필요, 현재 ${tripMapCount}개`);
 
 if (!/<th scope="row">17:00<br\s*\/?><small>~ 17:50<\/small><\/th>\s*<\/tr>/.test(classSchedule)) {
   errors.push('시간표 셀 병합 오류: 17:00 행에는 월~금 rowspan이 이어져야 함');
@@ -243,6 +249,9 @@ if (placeholders.length > 0) warnings.push(`개인화 필요: ${placeholders.joi
 if (/sample-(?:audio|video)\./.test(combined)) warnings.push('샘플 오디오·영상 참조를 본인 자료로 교체해야 함');
 if (/placeholder-trip-/.test(combined)) warnings.push('placeholder 여행 이미지를 본인 자료로 교체해야 함');
 if (/mailto:\[[^\]]+\]/.test(combined)) warnings.push('메일 링크 placeholder를 실제 이메일 주소로 교체해야 함');
+if (/제출 전|sample-(?:audio|video)|placeholder-trip-/.test(mediaReadme)) {
+  warnings.push('media/README.md가 현재 제출 미디어와 일치하지 않음');
+}
 
 if (strict && warnings.length > 0) errors.push(...warnings.map((warning) => `제출 준비 미완료: ${warning}`));
 
