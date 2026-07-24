@@ -17,7 +17,7 @@
           media 형태를 연습하기 위한 나의 여행 앨범입니다. <br />
           <small
             >사용 element : &lt;figure&gt; &lt;img&gt; &lt;figcaption&gt;
-            &lt;audio&gt; &lt;video&gt;</small
+            &lt;iframe&gt; &lt;audio&gt; &lt;video&gt;</small
           >
           <br />
           <small
@@ -51,10 +51,26 @@
                 alt="산티아고 순례길"
               />
               <figcaption>인생 최고의 여행지, 산티아고 순례길</figcaption>
-              <p class="trip-card">
-                <strong>산티아고</strong> — 순례길의 마지막 장면이 잘리지 않도록
-                세로 사진의 원본 비율을 살렸습니다.
-              </p>
+              <!--
+                서울 여행 관련 프로그램을 할 때, 개인적으로 외부 api로 지도를 갖다 쓰는게 굉장히 큰 도전이었습니다.
+                그 경험을 간접적으로나마 살리려, iframe를 통해 구글 지도를 삽입했습니다.
+              -->
+              <div class="trip-map-card">
+                <iframe
+                  src="https://www.google.com/maps?q=Catedral+de+Santiago+de+Compostela,+Praza+do+Obradoiro,+Santiago+de+Compostela&output=embed"
+                  title="산티아고 데 콤포스텔라 대성당 위치"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Catedral+de+Santiago+de+Compostela"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Google 지도에서 크게 보기
+                  <span class="visually-hidden">(새 탭에서 열림)</span></a
+                >
+              </div>
             </figure>
             <figure class="trip-figure">
               <img
@@ -62,10 +78,22 @@
                 alt="뉴욕 독립기념일 불꽃놀이"
               />
               <figcaption>뉴욕 독립기념일 불꽃놀이</figcaption>
-              <p class="trip-card">
-                <strong>뉴욕</strong> — 독립기념일 불꽃놀이 현장이 한눈에
-                들어오도록 사진 전체를 담았습니다.
-              </p>
+              <div class="trip-map-card">
+                <iframe
+                  src="https://www.google.com/maps?q=Midtown+Manhattan,+New+York,+NY&output=embed"
+                  title="뉴욕 미드타운 맨해튼 위치"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Midtown+Manhattan,+New+York,+NY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Google 지도에서 크게 보기
+                  <span class="visually-hidden">(새 탭에서 열림)</span></a
+                >
+              </div>
             </figure>
             <figure class="trip-figure">
               <img
@@ -73,10 +101,22 @@
                 alt="홍콩대학교"
               />
               <figcaption>홍콩대학교 교류 프로그램</figcaption>
-              <p class="trip-card">
-                <strong>홍콩</strong> — 교류 프로그램의 단체 사진도 같은
-                프레임에서 자연스럽게 보이도록 조정했습니다.
-              </p>
+              <div class="trip-map-card">
+                <iframe
+                  src="https://www.google.com/maps?q=Ricci+Hall,+The+University+of+Hong+Kong&output=embed"
+                  title="홍콩대학교 리치홀 위치"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Ricci+Hall,+The+University+of+Hong+Kong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Google 지도에서 크게 보기
+                  <span class="visually-hidden">(새 탭에서 열림)</span></a
+                >
+              </div>
             </figure>
           </div>
         </section>
